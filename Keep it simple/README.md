@@ -1,16 +1,16 @@
-### Interview Preparations
+## **Interview Preparations**
 
-### PHP
-### Principles
+## **PHP**
+## **Principles**
 
-#### Principle
-#### KISS
-##### Keep it simple, stupid
+### **Principle**
+### **KISS**
+### **Keep it simple, stupid**
 
-##### Overview
+### **Overview**
 Keep it simple (KISS) emphasizes simplicity in design and coding. The goal is to keep the code straightforward and easy to understand, avoiding unnecessary complexity. Simple code is easier to read, debug, maintain, reuse, and extend.
 
-##### Key concepts
+### **Key concepts**
 **Readability:** Code should be easy to read and understand. If a new developer looks at the code he should be able to grasp it without looking at comprehensive comments or explanations.
 
 **Maintainability:** Simple code is easier to maintain, less prone to bugs, and easier to debug if an issue arises.

@@ -1,0 +1,1 @@
+### Checkout the code snippets of patterns and principles in PHP, showing in an application how they would be implemented with notes in README files

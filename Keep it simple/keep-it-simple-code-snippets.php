@@ -9,78 +9,8 @@
 </head>
 <body>
 <?php
-// Complex code: Example 1
-function getUserStatusComplex($user)
-{
-    if ($user->isActive == true) {
-        return "Active";
-    } else {
-        if ($user->isBanned == true) {
-            return "Banned";
-        } else {
-            return "Inactive";
-        }
-    }
-}
 
-// Simplified code: Example 1
-
-function getUserStatusSimple($user) {
-    if ($user->isActive) {
-        return "Active";
-    } elseif ($user->isBanned) {
-        return "Banned";
-    } else {
-        return "Inactive";
-    }
-}
-
-
-// Complex code: Example 2
-function calculateDiscountComplex($price, $customer) {
-    $discount = 0;
-    if ($customer->isPremium()) {
-        if ($price > 100) {
-            $discount = $price * 0.10;
-        } else {
-            $discount = $price * 0.05;
-        }
-    } else {
-        if ($price > 100) {
-            $discount = $price * 0.05;
-        }
-    }
-    return $price - $discount;
-}
-
-// Simplified code: Example 2
-
-function calculateDiscountSimple($price, $customer) {
-    $discountRate = 0;
-
-    if ($customer->isPremium()) {
-        $discountRate = $price > 100 ? 0.10 : 0.05;
-    } else {
-        $discountRate = $price > 100 ? 0.05 : 0;
-    }
-
-    $discount = $price * $discountRate;
-    return $price - $discount;
-}
-
-// Complex code: Example 3
-$numbers = [5, 3, 2];
-$sum = 0;
-for ($i = 0; $i < count($numbers); $i++) {
-    $sum += $numbers[$i];
-}
-
-// Simplified code: Example 3
-
-$sum = array_sum($numbers);
-
-
-// Use Descriptive Names
+// Use Descriptive Names - START
 // Poor naming
 function calc($a, $b) {
     return $a * $b / 100;
@@ -92,7 +22,10 @@ function calculatePercentages($number, $percentage) {
 //    25*5/100 = 125/100 = 1,25 or 25 %
 }
 
-// Avoid Deep Nestings
+
+// Use Descriptive Names - END
+
+// Avoid Deep Nestings - START
 
 // Deep nesting
 function processOrderDeepnested($order) {
@@ -113,6 +46,7 @@ function processOrderDeepnested($order) {
         return "Order not paid";
     }
 }
+
 
 // Refactored to avoid deep nesting
 
@@ -135,7 +69,9 @@ function processOrderrRefactored($order) {
     return "Order processed";
 }
 
-// Limit the number of parameters
+// Avoid Deep Nestings - END
+
+// Limit the number of parameters - START
 
 function createUserTooManyParameters($name, $email, $password, $age, $address, $phone) {
     // User creation logic
@@ -166,8 +102,9 @@ function createUserExtractedToObject(UserData $userData) {
     // User creation logic
 }
 
+// Limit the number of parameters - END
 
-// Modularize Your Code
+// Modularize Your Code - START
 
 // Monolithic Function
 
@@ -225,8 +162,9 @@ function saveUser($user) {
     $db->save($user);
 }
 
+// Modularize Your Code - END
 
-// Comment Sparingly
+// Comment Sparingly - START
 
 // Excessive Comments
 
@@ -255,6 +193,7 @@ function factorial($n) {
     return $n * factorial($n - 1); // Recursive case
 }
 
+// Comment Sparingly - END
 
 ?>
 

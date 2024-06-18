@@ -28,7 +28,7 @@ function calculatePercentages($number, $percentage) {
 // Avoid Deep Nestings - START
 
 // Deep nesting
-function processOrderDeepnested($order) {
+function processOrderDeepNested($order) {
     if ($order->isPaid()) {
         if ($order->hasItems()) {
             foreach ($order->getItems() as $item) {
@@ -168,29 +168,93 @@ function saveUser($user) {
 
 // Excessive Comments
 
-function add($a, $b) {
-    // This function adds two numbers
-    // It takes two parameters
-    // The first parameter is the first number
-    // The second parameter is the second number
-    // It returns the sum of the two numbers
-    return $a + $b;
+/**
+ * This function processes each item in the order to reserve stock if available
+ * and calculates the total price after processing the items. It iterates over
+ * each item, checks if it is in stock, reserves it if so, calculates its price,
+ * adds the price to the total, and logs any out-of-stock items. After processing
+ * all items, it applies any discount available on the order and returns the total
+ * price.
+ *
+ * @param Order $order The order object containing items to process.
+ * @return float The total price of the order after processing.
+ */
+function processOrderItemsExcessiveComments($order) {
+    // Initialize total price accumulator
+    $totalPrice = 0;
+
+    // Loop through each item in the order
+    foreach ($order->getItems() as $item) {
+        // Check if the item is in stock
+        if ($item->isInStock()) {
+            // Reserve the item in stock
+            $item->reserve();
+
+            // Calculate the price of the item
+            $itemPrice = $item->getPrice();
+
+            // Add the price of the item to the total price
+            $totalPrice += $itemPrice;
+        } else {
+            // Log a message indicating that the item is out of stock
+            error_log("Item '{$item->getName()}' is out of stock.");
+        }
+    }
+
+    // Apply any discount that may be available for the order
+    if ($order->hasDiscount()) {
+        // Retrieve the discount percentage
+        $discount = $order->getDiscount();
+
+        // Calculate the discount amount
+        $discountAmount = $totalPrice * ($discount / 100);
+
+        // Subtract the discount amount from the total price
+        $totalPrice -= $discountAmount;
+    }
+
+    // Return the total price after processing and discount application
+    return $totalPrice;
 }
+
 
 
 // Necessary Comments
 
-// Adds two numbers and returns the result
-function add($a, $b) {
-    return $a + $b;
-}
+/**
+ * Processes each item in the order, reserves stock if available,
+ * and calculates the total price.
+ *
+ * @param Order $order The order object containing items to process.
+ * @return float The total price of the order after processing.
+ */
+function processOrderItemsWellCommented($order) {
+    $totalPrice = 0;
 
-// Computes the factorial of a number recursively
-function factorial($n) {
-    if ($n === 0) {
-        return 1; // Base case: 0! is 1
+    foreach ($order->getItems() as $item) {
+        // Check if item is in stock
+        if ($item->isInStock()) {
+            // Reserve item
+            $item->reserve();
+
+            // Calculate item price
+            $itemPrice = $item->getPrice();
+
+            // Add item price to total price
+            $totalPrice += $itemPrice;
+        } else {
+            // Log out-of-stock item
+            error_log("Item '{$item->getName()}' is out of stock.");
+        }
     }
-    return $n * factorial($n - 1); // Recursive case
+
+    // Apply discount if applicable
+    if ($order->hasDiscount()) {
+        $discount = $order->getDiscount();
+        $totalPrice -= $totalPrice * ($discount / 100);
+    }
+
+    return $totalPrice;
 }
 
 // Comment Sparingly - END

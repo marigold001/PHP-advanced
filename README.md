@@ -1,1 +1,1 @@
-### Checkout the code snippets of patterns and principles in PHP, showing in an application how they would be implemented with notes in README files
+### I am setting up a GitHub repository about various patterns and principles in PHP. Each snippet will be accompanied by README notes on the principle or pattern, with the goal to improve and grow in PHP development.
